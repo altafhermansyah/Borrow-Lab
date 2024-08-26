@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->integer('quantity');
+            $table->enum('quality', ['bad', 'normal', 'good']);
             $table->timestamps();
         });
     }

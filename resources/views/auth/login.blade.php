@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BorrowLab</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="img/svg/logo.svg" type="image/x-icon">
     <!-- Custom styles -->
-    <link rel="stylesheet" href="./css/style.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
 </head>
 
 <body>
@@ -26,7 +26,6 @@
                         class="form-control form-input @error('nisn') is-invalid @enderror" name="nisn"
                         value="{{ old('nisn') }}" required autocomplete="nisn" autofocus
                         placeholder="Enter your NISN">
-
                     @error('nisn')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -56,7 +55,7 @@
         </article>
     </main>
     <!-- Chart library -->
-    <script src="./plugins/chart.min.js"></script>
+    <script src="plugins/chart.min.js"></script>
     <!-- Icons library -->
     <script src="plugins/feather.min.js"></script>
     <!-- Custom scripts -->

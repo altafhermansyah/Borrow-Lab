@@ -27,7 +27,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="shortcut icon" type="image/png" href="images/logos/favicon.png" />
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -47,59 +47,44 @@
     <div class="container-fluid nav-bar px-0 px-lg-4 py-lg-0">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a href="/" class="navbar-brand p-0">
-                    <h1 class="text-primary mb-0"><i class="fab fa-slack me-2"></i> BorrowLab</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav mx-0 mx-lg-auto">
-                        <a href="/"
-                            class="nav-item nav-link @if (Request()->is('/')) active @endif">Home</a>
-                        <a href="/about"
-                            class="nav-item nav-link @if (Request()->is('about')) active @endif">About</a>
-                        <a href="/services"
-                            class="nav-item nav-link @if (Request()->is('services')) active @endif">Services</a>
-                        <div class="nav-btn px-3">
+                <div class="container-fluid">
+                    <a href="/" class="navbar-brand p-0">
+                        <h1 class="text-primary mb-0"><i class="fab fa-slack me-2"></i> BorrowLab</h1>
+                        <!-- <img src="img/logo.png" alt="Logo"> -->
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav ms-auto" style="background-color: #fff">
+                            <a href="/"
+                                class="nav-item nav-link @if (Request()->is('/')) active @endif">Home</a>
+                            <a href="/about"
+                                class="nav-item nav-link @if (Request()->is('about')) active @endif">About</a>
+                            <a href="/services"
+                                class="nav-item nav-link @if (Request()->is('services')) active @endif">Services</a>
+                        </div>
+                        <!-- Authentication Links -->
+                        <div class="d-flex">
+                            @guest
+                                @if (Route::has('login'))
+                                    <a href="{{ route('login') }}" class="btn btn-primary me-2 col-md-8">Sign In</a>
+                                @endif
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}" class="btn btn-primary col-md-8">Sign Up</a>
+                                @endif
+                            @else
+                                <a href="{{ route('home') }}" class="btn btn-primary col-md-12">Back to Dashboard</a>
+                            @endguest
                         </div>
                     </div>
                 </div>
-                <div class="d-none d-xl-flex flex-shrink-0 ps-4 d-grid gap-2">
-
-                </div>
-                <!-- Authentication Links -->
-                @guest
-                    @if (Route::has('login'))
-                        <button class="btn btn-primary" type="button">
-                            <a href="{{ route('login') }}"
-                                class="d-none d-xl-flex flex-shrink-0 ps-4 py-2 px-4 flex-shrink-0"
-                                style="color: white;">Sign In</a>
-                        </button>
-                    @endif
-
-                    @if (Route::has('register'))
-                        <div class="d-none d-xl-flex flex-shrink-0 ps-4 d-grid gap-2">
-                            <button class="btn btn-primary" type="button">
-                                <a href="{{ route('register') }}"
-                                    class="d-none d-xl-flex flex-shrink-0 py-2 px-4 flex-shrink-0"
-                                    style="color: white;">Sign Up</a>
-                            </button>
-                        </div>
-                    @endif
-                @else
-                    <button class="btn btn-primary" type="button">
-                        <a href="{{ route('home') }}" class="d-none d-xl-flex flex-shrink-0 py-2 px-4 flex-shrink-0"
-                            style="color: white;">Back to Dashboard</a>
-                    </button>
-                @endguest
-
-
             </nav>
         </div>
     </div>
+
     <!-- Navbar & Hero End -->
     {{-- Main Section --}}
     <main>

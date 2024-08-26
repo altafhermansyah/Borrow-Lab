@@ -5,10 +5,10 @@
         <div class="container text-center py-5" style="max-width: 900px;">
             <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Our Services</h4>
             <!-- <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item active text-primary">Service</li>
-                    </ol>     -->
+                                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                                                    <li class="breadcrumb-item active text-primary">Service</li>
+                                                </ol>     -->
         </div>
     </div>
     <!-- Header End -->
@@ -26,8 +26,8 @@
                 </p>
             </div>
             <div class="row g-4 justify-content-center">
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="service-item">
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp d-flex align-items-stretch" data-wow-delay="0.2s">
+                    <div class="d-flex flex-column service-item">
                         <div class="service-img">
                             <img src="img/2b.png" class="img-fluid rounded-top w-100" alt="">
                             <div class="service-icon p-3">
@@ -37,16 +37,14 @@
                         <div class="service-content p-4">
                             <div class="service-content-inner">
                                 <a href="#" class="d-inline-block h4 mb-4">Friendly Web</a>
-                                <p class="mb-4">Our website is very friendly fro new users. An elegant appearance,
-                                    allowing users to use the web easily</p>
-                                <br>
-                                <!-- <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Read More</a> -->
+                                <p class="mb-4">Our website is very friendly for new users. An elegant appearance,
+                                    allowing users to use the web easily.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="service-item">
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp d-flex align-items-stretch" data-wow-delay="0.4s">
+                    <div class="d-flex flex-column service-item">
                         <div class="service-img">
                             <img src="img/3c.png" class="img-fluid rounded-top w-100" alt="">
                             <div class="service-icon p-3">
@@ -56,15 +54,14 @@
                         <div class="service-content p-4">
                             <div class="service-content-inner">
                                 <a href="#" class="d-inline-block h4 mb-4">Easy web for Beginners</a>
-                                <p class="mb-4">The web is easy to use, even without instuctions. Our website
-                                    provides a good experience for users.</p>
-                                <!-- <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Read More</a> -->
+                                <p class="mb-4">The web is easy to use, even without instructions. Our website provides a
+                                    good experience for users.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="service-item">
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp d-flex align-items-stretch" data-wow-delay="0.6s">
+                    <div class="service-item d-flex flex-column">
                         <div class="service-img">
                             <img src="img/1a.png" class="img-fluid rounded-top w-100" alt="">
                             <div class="service-icon p-3">
@@ -83,8 +80,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                    <div class="service-item">
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp d-flex align-items-stretch" data-wow-delay="0.8s">
+                    <div class="service-item d-flex flex-column">
                         <div class="service-img">
                             <img src="img/4d.png" class="img-fluid rounded-top w-100" alt="">
                             <div class="service-icon p-3">
@@ -103,8 +100,8 @@
                     </div>
                 </div>
                 <!-- <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
-                            <a class="btn btn-primary rounded-pill py-3 px-5" href="#">More Services</a>
-                        </div> -->
+                                                        <a class="btn btn-primary rounded-pill py-3 px-5" href="#">More Services</a>
+                                                    </div> -->
             </div>
         </div>
     </div>
