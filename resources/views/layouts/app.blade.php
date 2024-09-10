@@ -94,7 +94,7 @@
                                 <span class="hide-menu">Features</span>
                             </li>
                             <li class="sidebar-item mt-2">
-                                <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+                                <a class="sidebar-link" href="borrow" aria-expanded="false">
                                     <span>
                                         <i class="ti ti-arrow-bar-down"></i>
                                     </span>

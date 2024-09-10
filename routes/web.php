@@ -30,4 +30,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('items', \App\Http\Controllers\ItemController::class);
     Route::resource('student', \App\Http\Controllers\StudentController::class);
     Route::resource('category', \App\Http\Controllers\CategoryController::class);
+    Route::resource('borrow', \App\Http\Controllers\BorrowController::class);
 });

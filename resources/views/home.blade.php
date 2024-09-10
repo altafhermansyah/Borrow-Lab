@@ -72,11 +72,11 @@
                         <div class="d-flex flex-wrap align-items-center justify-content-center">
                             <div class="row text-center">
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                                    <button
+                                    <a href="borrow"
                                         class="btn btn-lg square-btn m-1 fw-bolder btn-danger d-flex flex-column align-items-center justify-content-center">
                                         <i class="ti ti-arrow-bar-down mb-1" style="font-size: 1.8rem"></i>
                                         <span>BORROW</span>
-                                    </button>
+                                    </a>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-12">
                                     <button
@@ -99,109 +99,4 @@
             </div>
         </div>
     </div>
-    {{-- <div class="row">
-        <div class="col-lg-12 d-flex align-items-strech">
-            <div class="card w-100">
-                <div class="card-header">
-                    Featured
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title text-center">Welcome, {{ Auth::user()->name }}</h5>
-                    <p class="card-text text-center">You are logged in as a {{ Auth::user()->role }}.
-                    </p>
-                    <p class="card-text text-center mx-auto col-md-10">Welcome to BorrowLab the
-                        Computer
-                        Lab
-                        Equipment
-                        Lending System!
-                        We're glad to have you here. Feel free to explore our collection of equipment
-                        and
-                        make your reservations easily. If you need any assistance, don't hesitate to
-                        reach
-                        out to us. Happy browsing!</p>
-                    <div class="say mt-1">
-                        @if (Auth::user()->role == 'staff')
-                            <p class="card-text text-center">You have access to manage the
-                                students and the items listed below. Make sure to handle the data
-                                responsibly.
-                            </p>
-                        @else
-                            <p class="card-text text-center">You can enjoy a variety of features
-                                available
-                                below. Take your time to explore and utilize them for your academic
-                                needs.
-                            </p>
-                        @endif
-                    </div>
-                    @if (Auth::user()->role = 'staff')
-                        <div class="d-flex align-items-center justify-content-center">
-                            <div class="row text-center">
-                                <div class="col-md-3 text-center">
-                                    <button
-                                        class="btn btn-lg square-btn m-1 fw-bolder btn-success d-flex flex-column align-items-center justify-content-center">
-                                        <i class="ti ti-devices-2 mb-1" style="font-size: 1.8rem"></i>
-                                        <span>ITEMS</span>
-                                    </button>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <button
-                                        class="btn btn-lg square-btn m-1 fw-bolder btn-secondary d-flex flex-column align-items-center justify-content-center">
-                                        <i class="ti ti-user mb-1" style="font-size: 1.8rem"></i>
-                                        <span>STUDENTS</span>
-                                    </button>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <button
-                                        class="btn btn-lg square-btn m-1 fw-bolder btn-danger d-flex flex-column align-items-center justify-content-center">
-                                        <i class="ti ti-category-2 mb-1" style="font-size: 1.8rem"></i>
-                                        <span>CATEGORY</span>
-                                    </button>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <button
-                                        class="btn btn-lg square-btn m-1 fw-bolder btn-warning d-flex flex-column align-items-center justify-content-center">
-                                        <i class="ti ti-file-description mb-1" style="font-size: 1.8rem"></i>
-                                        <span>LOANS</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    @else
-                        <div class="d-flex align-items-center justify-content-center">
-                            <div class="row text-center">
-                                <div class="col-md-3 text-center">
-                                    <button
-                                        class="btn btn-lg square-btn m-1 fw-bolder btn-success d-flex flex-column align-items-center justify-content-center">
-                                        <i class="ti ti-devices-2 mb-1" style="font-size: 1.8rem"></i>
-                                        <span>ITEMS</span>
-                                    </button>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <button
-                                        class="btn btn-lg square-btn m-1 fw-bolder btn-secondary d-flex flex-column align-items-center justify-content-center">
-                                        <i class="ti ti-user mb-1" style="font-size: 1.8rem"></i>
-                                        <span>BORROW</span>
-                                    </button>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <button
-                                        class="btn btn-lg square-btn m-1 fw-bolder btn-danger d-flex flex-column align-items-center justify-content-center">
-                                        <i class="ti ti-category-2 mb-1" style="font-size: 1.8rem"></i>
-                                        <span>RETURN</span>
-                                    </button>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <button
-                                        class="btn btn-lg square-btn m-1 fw-bolder btn-warning d-flex flex-column align-items-center justify-content-center">
-                                        <i class="ti ti-file-description mb-1" style="font-size: 1.8rem"></i>
-                                        <span>LOANS</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                </div>
-            </div>
-        </div>
-    </div> --}}
 @endsection
