@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('item_id')->unsigned();
-            $table->date('loan_date');
-            $table->date('return_date');
-            $table->enum('status', ['borrowed', 'returned']);
+            $table->date('loan_date')->nullable();
+            $table->date('return_date')->nullable();
+            $table->enum('status', ['pending' , 'borrowed', 'returnPending', 'returned']);
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('item_id')->references('id')->on('items');

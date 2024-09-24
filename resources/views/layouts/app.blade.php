@@ -81,7 +81,7 @@
                                 </a>
                             </li>
                             <li class="sidebar-item mt-2">
-                                <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+                                <a class="sidebar-link" href="loans" aria-expanded="false">
                                     <span>
                                         <i class="ti ti-file-description"></i>
                                     </span>
@@ -102,7 +102,7 @@
                                 </a>
                             </li>
                             <li class="sidebar-item mt-2">
-                                <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+                                <a class="sidebar-link" href="return" aria-expanded="false">
                                     <span>
                                         <i class="ti ti-arrow-bar-up"></i>
                                     </span>
@@ -110,7 +110,7 @@
                                 </a>
                             </li>
                             <li class="sidebar-item mt-2">
-                                <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+                                <a class="sidebar-link" href="studentHistory" aria-expanded="false">
                                     <span>
                                         <i class="ti ti-history"></i>
                                     </span>

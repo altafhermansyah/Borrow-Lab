@@ -45,9 +45,9 @@ class ItemController extends Controller
             2 => 'normal',
             3 => 'good',
         ];
-        
+
         $condition = $conditionMap[$request->input('condition')]; // Konversi nilai
-        
+
         $items = Item::create([
             'image' => $image->hashName(),
             'name' => $request->input('name'),
@@ -55,7 +55,7 @@ class ItemController extends Controller
             'condition' => $condition, // Gunakan variabel $condition yang sudah dikonversi
         ]);
 
-        
+
 
         if($items)
         {
@@ -94,28 +94,28 @@ class ItemController extends Controller
             'description' => 'required',
             'condition' => 'required|in:1,2,3',
         ]);
-        
+
         $items = Item::findOrFail($id);
 
         // If a new image is uploaded, process the upload
         if ($request->hasFile('image')) {
             // Delete the old image
             Storage::delete('public/images/' . $items->image);
-    
+
             // Upload the new image
             $image = $request->file('image');
             $image->storeAs('public/images', $image->hashName());
-    
+
             // Update the image name in the database
             $items->image = $image->hashName();
         }
-        
+
         $conditionMap = [
             1 => 'bad',
             2 => 'normal',
             3 => 'good',
         ];
-        
+
         $condition = $conditionMap[$request->input('condition')]; // Konversi nilai
 
         $items->update([
@@ -140,6 +140,11 @@ class ItemController extends Controller
     public function destroy(String $id)
     {
         $items = Item::findOrFail($id);
+
+        if ($items->image) {
+            // Hapus file gambar dari storage
+            Storage::delete($items->image);
+        }
 
         $items->delete();
 

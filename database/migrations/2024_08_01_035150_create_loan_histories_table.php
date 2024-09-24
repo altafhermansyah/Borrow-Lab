@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('loan_histories', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('loan_id')->unsigned();
-            $table->enum('status', ['borrowed', 'returned']);
 
             $table->foreign('loan_id')->references('id')->on('loans');
             $table->timestamps();

@@ -79,18 +79,18 @@
                                     </a>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                                    <button
+                                    <a href="return"
                                         class="btn btn-lg square-btn m-1 fw-bolder btn-warning d-flex flex-column align-items-center justify-content-center">
                                         <i class="ti ti-arrow-bar-up mb-1" style="font-size: 1.8rem"></i>
                                         <span>RETURN</span>
-                                    </button>
+                                    </a>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                                    <button
+                                    <a href="studentHistory"
                                         class="btn btn-lg square-btn m-1 fw-bolder btn-secondary d-flex flex-column align-items-center justify-content-center">
                                         <i class="ti ti-history mb-1" style="font-size: 1.8rem"></i>
                                         <span>HISTORY</span>
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

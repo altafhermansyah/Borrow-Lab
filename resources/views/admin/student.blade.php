@@ -10,11 +10,11 @@
                     <h5 class="card-title">Manage Student</h5>
                     <hr>
                     <div class="mt-1 mx-auto col-md-10">
-                        <table class="table table-responsive table-hover table-bordered border-primary" id="studentTable">
+                        <table class="table table-responsive table-hover" id="studentTable">
                             <input type="text" id="search" class="form-control mb-3"
                                 placeholder="Search by nisn or name">
                             <thead>
-                                <tr class="table-light border-primary">
+                                <tr class="table-dark">
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">NISN</th>

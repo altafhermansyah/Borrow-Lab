@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Loans;
+use App\Models\Item;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class LoanController extends Controller
 {
@@ -12,15 +14,19 @@ class LoanController extends Controller
      */
     public function index()
     {
-        //
+        $loans = Loans::latest()->with('items', 'users')->paginate(8);
+        return view('admin.loans', compact('loans'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $loans = Loans::latest()->with('items', 'users')->get();
+
+        $pdf = Pdf::loadView('admin.report.print', compact('loans'));
+        return $pdf->stream();
     }
 
     /**
@@ -50,9 +56,30 @@ class LoanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Loans $loans)
+    public function update(Request $request, String $id)
     {
-        //
+        $this->validate($request, [
+            'loan_date'=> '',
+            'return_date'=> '',
+            'status' => '',
+        ]);
+
+        $loans = Loans::findOrFail($id);
+
+        $loans->update([
+            'loan_date' => $request->input('loan_date'),
+            'status' => $request->input('status'),
+            'return_date' => $request->input('return_date'),
+        ]);
+
+        if($loans)
+        {
+            return redirect()->route('loans.index')->with(['update' => 'Item Data Updated Successfully']);
+        }
+        else
+        {
+            return redirect()->route('loans.index')->with(['error' => 'Item Data Failed to Update']);
+        }
     }
 
     /**

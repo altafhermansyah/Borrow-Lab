@@ -20,11 +20,11 @@
                     <table class="table">
                         <thead class="table-dark">
                             <tr>
-                                <th scope="col">No</th>
+                                <th scope="col">#</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Description</th>
-                                <th scope="col">Amount</th>
+                                <th scope="col">Condition</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>

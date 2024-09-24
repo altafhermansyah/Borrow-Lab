@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Loans;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Item extends Model
 {
@@ -15,4 +16,9 @@ class Item extends Model
         'description',
         'condition',
     ];
+
+    public function loans()
+    {
+        return $this->hasMany(Loans::class);
+    }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +13,54 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $data = [
+            [
+                'name' => 'qwer',
+                'nisn' => 'qwer',
+                'password' => bcrypt('asd'),
+                'role' => 'staff'
+            ],
+            [
+                'name' => 'Altanix',
+                'nisn' => '1234',
+                'password' => bcrypt('asd'),
+                'role' => 'staff'
+            ],
+            [
+                'name' => 'Otto Hasibuan',
+                'nisn' => 'otto',
+                'password' => bcrypt('asd'),
+                'role' => 'staff'
+            ],
+            [
+                'name' => 'Hotman Paris',
+                'nisn' => 'hotman',
+                'password' => bcrypt('asd'),
+                'role' => 'student'
+            ],
+            [
+                'name' => 'Tio Aladah',
+                'nisn' => 'tio',
+                'password' => bcrypt('asd'),
+                'role' => 'student'
+            ],
+            [
+                'name' => 'Toni Adalah',
+                'nisn' => 'toni',
+                'password' => bcrypt('asd'),
+                'role' => 'student'
+            ],
+            [
+                'name' => 'Tino Ladalah',
+                'nisn' => 'tino',
+                'password' => bcrypt('asd'),
+                'role' => 'student'
+            ],
+        ];
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        foreach($data as $key => $d)
+        {
+            User::create($d);
+        }
     }
 }
