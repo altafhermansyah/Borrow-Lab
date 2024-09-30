@@ -72,7 +72,7 @@
                                             <p class="text-center">{{ $loan->items->description }}</p>
                                         </div>
                                     </div>
-                                    <p class="mt-2 text-center">Are you sure you want to borrow this item?</p>
+                                    <p class="mt-2 text-center">Are you sure you want to return this item?</p>
                                     <div class="modal-footer justify-content-between">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>

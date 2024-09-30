@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Loans;
 use Illuminate\Http\Request;
 
 class HistoryStController extends Controller
@@ -11,7 +12,9 @@ class HistoryStController extends Controller
      */
     public function index()
     {
-        return view('siswa.history');
+        $userId = auth()->user()->id;
+        $loans = Loans::with('items')->where('user_id', $userId)->where('status',  'returned')->paginate(8);
+        return view('siswa.history', compact('loans'));
     }
 
     /**

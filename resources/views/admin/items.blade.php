@@ -9,7 +9,7 @@
                 </div>
 
                 <div class="card-body">
-                    <h5 class="card-title fw-bolder">Manage Items</h5>
+                    <h5 class="card-title fs-6 fw-bolder">Manage Items</h5>
 
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary mt-3 mb-3" data-bs-toggle="modal"

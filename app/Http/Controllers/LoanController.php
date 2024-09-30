@@ -23,7 +23,14 @@ class LoanController extends Controller
      */
     public function create(Request $request)
     {
-        $loans = Loans::latest()->with('items', 'users')->get();
+        $query = Loans::latest()->with('items', 'users');
+
+        if ($request->has('start_date') && $request->has('end_date') && !empty($request->start_date) && !empty($request->end_date))
+        {
+            $query->whereBetween('loan_date', [$request->start_date, $request->end_date]);
+        }
+
+        $loans = $query->get();
 
         $pdf = Pdf::loadView('admin.report.print', compact('loans'));
         return $pdf->stream();

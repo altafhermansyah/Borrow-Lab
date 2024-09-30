@@ -7,7 +7,7 @@
                     Students
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Manage Student</h5>
+                    <h5 class="card-title fs-6 fw-bolder">Manage Student</h5>
                     <hr>
                     <div class="mt-1 mx-auto col-md-10">
                         <table class="table table-responsive table-hover" id="studentTable">

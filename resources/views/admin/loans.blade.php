@@ -8,10 +8,24 @@
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-end">
-                        <a href="{{ route('loans.create') }}" type="button" class="btn btn-dark mb-3 ms-auto">
-                            <i class="ti ti-printer me-2"></i>Print to PDF
-                        </a>
+                        <form action="{{ route('loans.create') }}" method="GET" class="d-flex">
+                            <div class="mb-3 me-2">
+                                <label for="start_date" class="form-label">Loan Start Date</label>
+                                <input type="date" name="start_date" id="start_date" class="form-control me-2"
+                                    placeholder="Start Date">
+                            </div>
+                            <div class="mb-3 me-2">
+                                <label for="end_date" class="form-label">Loan End Date</label>
+                                <input type="date" name="end_date" id="end_date" class="form-control me-2"
+                                    placeholder="End Date">
+                            </div>
+                            <button type="submit" class="btn btn-dark mb-3 ms-auto">
+                                <i class="ti ti-printer me-2"></i>Print to PDF
+                            </button>
+                        </form>
                     </div>
+
+
                     <table class="table">
                         <thead class="table-dark">
                             <tr>
@@ -103,7 +117,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>allow this item to be borrowed by {{ $loan->users->name }}?</p>
+                                            <p>Has {{ $loan->users->name }} returned this item?</p>
                                         </div>
                                         <div class="modal-footer justify-content-between">
                                             <button type="button" class="btn btn-secondary"
@@ -111,8 +125,8 @@
                                             <form action="{{ route('loans.update', $loan->id) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
-                                                <input type="text" class="form-control" name="status" value="returned"
-                                                    hidden>
+                                                <input type="text" class="form-control" name="status"
+                                                    value="returned" hidden>
                                                 <input type="text" class="form-control" name="loan_date"
                                                     value="{{ old('loan_date', $loan->loan_date) }}" hidden>
                                                 <input type="text" class="form-control" name="return_date"

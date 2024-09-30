@@ -24,7 +24,7 @@
                     <p class="form-label">Name</p>
                     <input id="name" type="text"
                         class="form-control form-input @error('name') is-invalid @enderror" name="name"
-                        value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Enter your name"
+                        value="{{ old('name') }}" autocomplete="name" autofocus placeholder="Enter your name"
                         required>
 
                     @error('name')
@@ -37,11 +37,11 @@
                     <p class="form-label">NISN</p>
                     <input id="nisn" type="text"
                         class="form-control form-input @error('nisn') is-invalid @enderror" name="nisn"
-                        value="{{ old('nisn') }}" required autocomplete="nisn" placeholder="Enter your NISN" required>
+                        value="{{ old('nisn') }}" autocomplete="nisn" placeholder="Enter your NISN" required>
 
                     @error('nisn')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                        <span class="invalid-feedback text-danger" role="alert">
+                            {{ $message }}
                         </span>
                     @enderror
                 </label>
@@ -57,14 +57,24 @@
                         </span>
                     @enderror
                 </label>
-                <label class="form-checkbox-wrapper">
+
+                <!-- Tautan "Already have an account?" berada di tengah -->
+                <a class="link-info forget-link" href="{{ route('login') }}">Already have an account? Login now!</a>
+                <label class="form-checkbox-wrapper mt-3">
                     <input class="form-checkbox form-check-input" type="checkbox" name="remember" id="remember"
                         {{ old('remember') ? 'checked' : '' }}>
                     <span class="form-checkbox-label">Remember me next time</span>
                 </label>
+
                 <button type="submit" class="form-btn primary-default-btn transparent-btn">
                     {{ __('Sign Up') }}
                 </button>
+
+                <div class="d-flex justify-content-center">
+                    <a class="link-info forget-link" href="/">Want to get back to the dashboard?</a>
+                </div>
+            </form>
+        </article>
     </main>
     <!-- Chart library -->
     <script src="./plugins/chart.min.js"></script>
