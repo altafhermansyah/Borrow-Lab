@@ -108,7 +108,6 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $c->categories->name }}</td>
                                         <td>{{ $c->items->name }}</td>
-                                        {{-- <td>{{ $c->item->name }}</td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -135,15 +134,21 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('category.update', $category->id) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <div class="mb-3">
-                                <label for="item-name" class="col-form-label">Category Name:</label>
-                                <input type="text" class="form-control" id="item-name" name="name" required
-                                    value="{{ old('name', $category->name) }}">
-                            </div>
-                        </form>
+                        <div class="row d-flex justify-content-center align-items-stretch">
+                            @foreach ($itemCat as $c)
+                                @if ($c->category_id == $category->id)
+                                    <div class="card m-1" style="width: 10rem;">
+                                        <img src="{{ asset('/storage/images/' . $c->items->image) }}" class="card-img-top"
+                                            alt="...">
+                                        <div class="card-body d-flex flex-column">
+                                            <h5 class="card-title">{{ $c->items->name }}</h5>
+                                            <!-- <p class="card-text">{{ $c->items->description }}</p> -->
+                                            <p class="card-text">Condition: {{ $c->items->condition }}</p>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

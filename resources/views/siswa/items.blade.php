@@ -11,7 +11,8 @@
                     <div class="row d-flex justify-content-center align-items-stretch">
                         @forelse ($items as $item)
                             <div class="card m-1" style="width: 15rem;">
-                                <img src="{{ asset('/storage/images/' . $item->image) }}" class="card-img-top" alt="...">
+                                <img src="{{ asset('/storage/images/' . $item->image) }}" class="card-img-top w-100 h-100"
+                                    alt="...">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">{{ $item->name }}</h5>
                                     <p class="card-text">{{ $item->description }}</p>

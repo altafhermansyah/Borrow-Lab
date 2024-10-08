@@ -60,11 +60,11 @@
                                     </a>
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-                                    <button
+                                    <a href="loans"
                                         class="btn btn-lg square-btn m-1 fw-bolder btn-warning d-flex flex-column align-items-center justify-content-center">
                                         <i class="ti ti-file-description mb-1" style="font-size: 1.8rem"></i>
                                         <span>LOANS</span>
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

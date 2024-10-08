@@ -11,8 +11,23 @@ class ItemController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = Item::query();
+
+        if ($request->ajax()) {
+            if ($request->has('search')) {
+                $search = $request->input('search');
+                $query->where(function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%")
+                    ->orWhere('condition', 'like', "%{$search}%");
+                });
+            }
+            $items = $query->get();
+            return response()->json(['items' => $items]);
+        }
+
         $items = Item::latest()->paginate(5);
         return view('admin.items', compact('items'));
     }
@@ -140,13 +155,13 @@ class ItemController extends Controller
     public function destroy(String $id)
     {
         $items = Item::findOrFail($id);
-
         if ($items->image) {
             // Hapus file gambar dari storage
             Storage::delete($items->image);
         }
 
         $items->delete();
+
 
         if($items)
         {

@@ -12,8 +12,28 @@ class LoanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = Loans::with('items', 'users');
+
+        if ($request->ajax()) {
+            if ($request->has('search')) {
+                $search = $request->input('search');
+                $query->whereHas('users', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%");
+                })
+                ->orWhereHas('items', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%");
+                })
+                ->orWhere(function ($q) use ($search) {
+                    $q->where('status', 'like', "%{$search}%")
+                    ->orWhere('loan_date', 'like', "%{$search}%");
+                });
+            }
+            $loans = $query->get();
+            return response()->json(['loans' => $loans]);
+        }
+
         $loans = Loans::latest()->with('items', 'users')->paginate(8);
         return view('admin.loans', compact('loans'));
     }

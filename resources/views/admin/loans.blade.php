@@ -24,8 +24,9 @@
                             </button>
                         </form>
                     </div>
-
-
+                    <div class="d-flex justify-content-end">
+                        <input type="text" id="search" class="form-control mb-3 w-25" placeholder="Search">
+                    </div>
                     <table class="table">
                         <thead class="table-dark">
                             <tr>
@@ -38,7 +39,7 @@
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="loans-table">
                             @php
                                 $no = ($loans->currentPage() - 1) * $loans->perPage() + 1;
                             @endphp
@@ -52,18 +53,25 @@
                                     <td>{{ $loan->loan_date }}</td>
                                     <td>{{ $loan->return_date }}</td>
                                     <td>
-                                        <form>
-                                            @if ($loan->status == 'pending')
-                                                <button type="button" class="btn btn-md btn-primary" data-bs-toggle="modal"
-                                                    data-bs-target="#acc{{ $loan->id }}">ACC</button>
-                                            @elseif ($loan->status == 'returnPending')
-                                                <button type="button" class="btn btn-md btn-primary" data-bs-toggle="modal"
-                                                    data-bs-target="#acc{{ $loan->id }}">ACC</button>
-                                            @else
-                                                <button type="button" class="btn btn-md btn-primary" data-bs-toggle="modal"
-                                                    data-bs-target="#acc{{ $loan->id }}" disabled>ACC</button>
-                                            @endif
-                                        </form>
+                                        @if ($loan->status == 'pending')
+                                            <button type="button" class="btn btn-md btn-primary m-2" data-bs-toggle="modal"
+                                                data-bs-target="#acc{{ $loan->id }}">ACC</button>
+                                        @elseif ($loan->status == 'returnPending')
+                                            <button type="button" class="btn btn-md btn-primary m-2" data-bs-toggle="modal"
+                                                data-bs-target="#acc{{ $loan->id }}">ACC</button>
+                                        @else
+                                            <button type="button" class="btn btn-md btn-primary m-2" data-bs-toggle="modal"
+                                                data-bs-target="#acc{{ $loan->id }}" disabled>ACC</button>
+                                        @endif
+                                        @if ($loan->status == 'pending')
+                                            <button type="button" class="btn btn-md btn-outline-dark m-2"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#empty{{ $loan->id }}">Empty</button>
+                                        @else
+                                            <button type="button" class="btn btn-md btn-outline-dark m-2"
+                                                data-bs-toggle="modal" data-bs-target="#empty{{ $loan->id }}"
+                                                disabled>Empty</button>
+                                        @endif
                                     </td>
                                 </tr>
                             @empty
@@ -117,7 +125,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Has {{ $loan->users->name }} returned this item?</p>
+                                            <p>allow this item to be borrowed by {{ $loan->users->name }}?</p>
                                         </div>
                                         <div class="modal-footer justify-content-between">
                                             <button type="button" class="btn btn-secondary"
@@ -138,9 +146,80 @@
                                 </div>
                             </div>
                         @endif
+                        <div class="modal fade" id="empty{{ $loan->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Empty Item</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Is this item really empty??</p>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <form action="{{ route('loans.update', $loan->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="text" class="form-control" name="status" value="empty"
+                                                hidden>
+                                            <button type="submit" class="btn btn-success">YES</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
                 </div>
             </div>
         </div>
     </div>
 @endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#search').on('keyup', function() {
+            var query = $(this).val();
+            $.ajax({
+                url: "{{ route('loans.index') }}",
+                type: "GET",
+                data: {
+                    'search': query
+                },
+                success: function(data) {
+                    var tableContent = '';
+                    var no = 1;
+                    $.each(data.loans, function(key, loan) {
+                        tableContent += '<tr>';
+                        tableContent += '<th scope="row">' + no++ + '</th>';
+                        tableContent += '<td><img src="/storage/images/' + loan
+                            .items.image +
+                            '" class="rounded" style="width: 150px"></td>';
+                        tableContent += '<td>' + loan.users.name + '</td>';
+                        tableContent += '<td>' + loan.status.replace(
+                            'returnPending', 'Return Pending') + '</td>';
+                        tableContent += '<td>' + loan.loan_date + '</td>';
+                        tableContent += '<td>' + loan.return_date + '</td>';
+                        tableContent += '<td>';
+                        if (loan.status === 'pending' || loan.status ===
+                            'returnPending') {
+                            tableContent +=
+                                '<button type="button" class="btn btn-md btn-primary" data-bs-toggle="modal" data-bs-target="#acc' +
+                                loan.id + '">ACC</button>';
+                        } else {
+                            tableContent +=
+                                '<button type="button" class="btn btn-md btn-primary" data-bs-toggle="modal" data-bs-target="#acc' +
+                                loan.id + '" disabled>ACC</button>';
+                        }
+                        tableContent += '</td>';
+                        tableContent += '</tr>';
+                    });
+                    $('#loans-table').html(tableContent);
+                }
+            });
+        });
+    });
+</script>

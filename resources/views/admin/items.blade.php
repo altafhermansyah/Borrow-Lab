@@ -9,13 +9,18 @@
                 </div>
 
                 <div class="card-body">
-                    <h5 class="card-title fs-6 fw-bolder">Manage Items</h5>
+                    <h5 class="card-title fw-bolder">Manage Items</h5>
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary mt-3 mb-3" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
-                        <i class="ti ti-plus"></i> Add Item
-                    </button>
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-primary mt-3 mb-3 btn-lg" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            <i class="ti ti-plus"></i> Add Item
+                        </button>
+
+                        <input type="text" id="search" class="form-control mb-3 w-25"
+                            placeholder="Search Items by Name">
+                    </div>
 
                     <table class="table">
                         <thead class="table-dark">
@@ -28,7 +33,7 @@
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="items-table">
                             @php
                                 $no = ($items->currentPage() - 1) * $items->perPage() + 1;
                             @endphp
@@ -251,3 +256,46 @@
         </div>
     </div>
 @endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#search').on('keyup', function() {
+            var query = $(this).val();
+            $.ajax({
+                url: "{{ route('items.index') }}",
+                type: "GET",
+                data: {
+                    'search': query
+                },
+                success: function(data) {
+                    var tableContent = '';
+                    var no = 1;
+                    $.each(data.items, function(key, item) {
+                        tableContent += '<tr>';
+                        tableContent += '<th>' + no++ + '</th>';
+                        var imageUrl = '{{ asset('/storage/images/') }}/' + item
+                            .image;
+                        tableContent += '<td><img src="' + imageUrl +
+                            '" class="rounded" style="width: 150px"></td>';
+                        tableContent += '<td>' + item.name + '</td>';
+                        tableContent += '<td>' + item.description + '</td>';
+                        tableContent += '<td>' + item.condition + '</td>';
+
+                        tableContent += '<td>';
+                        tableContent += '<form>';
+                        tableContent +=
+                            '<button type="button" class="btn btn-sm btn-primary me-1" data-bs-toggle="modal" data-bs-target="#edit' +
+                            item.id + '">EDIT</button>';
+                        tableContent +=
+                            '<button type="button" class="btn btn-sm btn-danger me-1" data-bs-toggle="modal" data-bs-target="#delete' +
+                            item.id + '">DELETE</button>';
+                        tableContent += '</td>';
+                        tableContent += '</form>';
+                        tableContent += '</tr>';
+                    });
+                    $('#items-table').html(tableContent);
+                }
+            });
+        });
+    });
+</script>
